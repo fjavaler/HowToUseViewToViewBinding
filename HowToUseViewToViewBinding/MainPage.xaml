@@ -7,10 +7,35 @@
     mc:Ignorable="d"
     x:Class="HowToUseViewToViewBinding.MainPage">
     <StackLayout>
-        <!-- Place new controls here -->
-        <Label
-            Text="Welcome to Xamarin.Forms!"
-            HorizontalOptions="Center"
-            VerticalOptions="CenterAndExpand" />
+        <Grid
+            Padding="50, 20,20,10">
+            <Grid.RowDefinitions>
+                <RowDefinition
+                    Height="*"/>
+                <RowDefinition
+                    Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition
+                    Width="*"/>
+                <ColumnDefinition
+                    Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label
+                Text="Value"
+                Grid.Row="0"
+                Grid.Column="0"/>
+            <Label
+                BindingContext="{Binding Source={x:Reference TheSlider}}"
+                Text="{Binding Value}"
+                Grid.Row="0"
+                Grid.Column="1"/>
+            <Slider
+                x:Name="TheSlider"
+                Maximum="100"
+                Minimum="0"
+                Grid.Row="1"
+                Grid.ColumnSpan="2"/>
+        </Grid>
     </StackLayout>
 </ContentPage>
